@@ -41,7 +41,6 @@ namespace MyTunes.Controllers
         
         // POST: /Account/Register
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public JsonResult Create(PlayListViewModel playlist)
         {
             if (ModelState.IsValid)

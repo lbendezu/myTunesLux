@@ -50,12 +50,6 @@
             playlist.Tracks.push({ Id: idTrack });
         });
 
-        //function PlayListModel() {
-        //    var self = this;
-        //    self.Nombre = $("#Nombre").val();
-        //    self.tracks = [];
-        //}
-
         $.ajax(
             {
                 url: "/Playlist/Create",
@@ -65,7 +59,7 @@
                     $(".result").html(data);
                 },
                 dataType: "json",
-                contentType: "application/json" //"application/json; charset=utf-8"
+                contentType: "application/json"
             });
     });
 
