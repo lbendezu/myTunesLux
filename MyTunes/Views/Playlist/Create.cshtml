@@ -1,0 +1,62 @@
+﻿@model  MyTunes.Models.PlayListViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Playlist</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Track</label>
+            <div class="col-md-4">
+                <input type="hidden" id="hdn-track-id" />
+                <input type="text" id="input-track" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <input type="button" value="Agregar Track" class="btn btn-default" id="add-track" />
+            </div>
+        </div>
+
+        <table class="table" id="tb_track">
+            <tr>
+                <th>Lista de Tracks</th>
+                <th></th>
+            </tr>
+        </table>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="create-playlist" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery-ui")
+    <script type="text/javascript" src="~/Scripts/Playlist/Create.js"></script>
+}
+
+
