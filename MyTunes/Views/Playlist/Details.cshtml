@@ -1,0 +1,51 @@
+﻿@model MyTunes.Models.PlayListViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PlayListViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calificacion)
+        </dd>
+
+    </dl>
+</div>
+
+@if (Model.Track.Count == 0)
+{
+    <hr />
+    <p>La Lista de reproducción no tiene canciones registradas.</p>
+}
+<table class="table">
+    @foreach (var item in Model.Track)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+        </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

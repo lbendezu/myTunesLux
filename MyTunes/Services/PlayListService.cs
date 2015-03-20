@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using MyTunes.Models;
 using MyTunes.Repository;
+using MyTunes.Dominio;
 
 namespace MyTunes.Services
 {
@@ -24,6 +25,23 @@ namespace MyTunes.Services
             var playLists = _playListRepository.Get(customer.Id); // PlayList
             // aqui se tiene que hacer un mapeo del dominio al viewmodel
             return playLists.Select(playList => new PlayListViewModel(playList)).ToList();
+        }
+
+        public int Create(PlayListViewModel playlistVM, int CustomerId) {
+
+            var playlist = new Playlist();
+
+            playlist.Name = playlistVM.Nombre;
+            playlist.CustomerId = CustomerId;
+
+            foreach (var track in playlistVM.Track)
+            {
+                playlist.Track.Add(track);                
+            }
+
+           
+            
+            return _playListRepository.Create(playlist);
         }
          
         public void Dispose()

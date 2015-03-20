@@ -28,6 +28,11 @@ namespace MyTunes.Services
             
         }
 
+        public Customer GetByEmail(string sEmail) {
+
+            return _customerRepository.GetByEmail(sEmail);
+        }
+
         public void Dispose()
         {
             _customerRepository = null;

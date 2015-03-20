@@ -39,15 +39,13 @@
     $("#create-playlist").on('click', function () {
 
         var playlist = {
-            Id : '1',
-            Calificacion : '2',
             Nombre : $("#Nombre").val(),
-            Tracks: []
+            Track: []
         };
 
         $("td[data-pick='1']").each(function () {
             var idTrack = $(this).attr("data-id");
-            playlist.Tracks.push({ Id: idTrack });
+            playlist.Track.push({ Id: idTrack });
         });
 
         $.ajax(

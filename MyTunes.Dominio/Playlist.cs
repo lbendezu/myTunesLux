@@ -10,13 +10,13 @@ namespace MyTunes.Dominio
     {
         public Playlist()
         {
-            Tracks = new HashSet<Track>();
+            Track = new HashSet<Track>();
         }
 
 
         [StringLength(120)]
         public string Name { get; set; }
         public int CustomerId { get; set; }
-        public virtual ICollection<Track> Tracks { get; set; }
+        public virtual ICollection<Track> Track { get; set; }
     }
 }

@@ -43,13 +43,19 @@ namespace MyTunes.Controllers
         [HttpPost]
         public JsonResult Create(PlayListViewModel playlist)
         {
-            if (ModelState.IsValid)
-            {
-               
-            }
+            var playlistService = new PlayListService();
+            var customerService = new CustomerService();
+
+            var customer = customerService.GetByEmail(User.Identity.Name);
+
+            playlistService.Create(playlist, customer.Id);
 
             // If we got this far, something failed, redisplay form
             return Json(true);
+        }
+
+        public ActionResult Details() {
+            return View();
         }
     }
 }

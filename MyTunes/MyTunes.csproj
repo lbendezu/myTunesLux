@@ -184,6 +184,7 @@
     <Content Include="Scripts\Playlist\Create.js" />
     <Content Include="Views\Playlist\Index.cshtml" />
     <Content Include="Views\Playlist\Create.cshtml" />
+    <Content Include="Views\Playlist\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -269,7 +270,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CustomerViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlaylistController.cs" />

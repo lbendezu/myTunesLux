@@ -63,7 +63,7 @@ namespace MyTunes.Repository
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Playlist>()
-                .HasMany(e => e.Tracks)
+                .HasMany(e => e.Track)
                 .WithMany(e => e.Playlist)
                 .Map(m => m.ToTable("PlaylistTrack").MapLeftKey("PlaylistId").MapRightKey("TrackId"));
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyTunes.Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace MyTunes.Models
     {
 
         public PlayListViewModel() {
-            Tracks = new List<Track>();
+            Track = new List<Track>();
         }
 
         public PlayListViewModel(Dominio.Playlist playList)
@@ -22,11 +23,6 @@ namespace MyTunes.Models
         public int Id { get; set; }
         public string Nombre { get; set; }
         public int Calificacion { get; set; }
-        public List<Track> Tracks { get; set; }
-
-        public class Track
-        {
-            public int Id { get; set; }
-        }
+        public List<Track> Track { get; set; }
     }
 }
