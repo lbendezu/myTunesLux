@@ -27,6 +27,19 @@ namespace MyTunes.Services
             return playLists.Select(playList => new PlayListViewModel(playList)).ToList();
         }
 
+        public PlayListViewModel GetById(int playlistId)
+        {
+            var playList = _playListRepository.GetById(playlistId); // PlayList
+            var playListVM = new PlayListViewModel();
+
+            playListVM.Id = playList.Id;
+            playListVM.Nombre = playList.Name;
+            playList.Track.ToList().ForEach(t => playListVM.Track.Add(t));
+
+            // aqui se tiene que hacer un mapeo del dominio al viewmodel
+            return playListVM;
+        }
+
         public int Create(PlayListViewModel playlistVM, int CustomerId) {
 
             var playlist = new Playlist();
@@ -42,6 +55,10 @@ namespace MyTunes.Services
            
             
             return _playListRepository.Create(playlist);
+        }
+
+        public int Delete(int id) {
+            return _playListRepository.Delete(id);
         }
          
         public void Dispose()

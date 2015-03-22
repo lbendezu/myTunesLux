@@ -21,7 +21,13 @@ namespace MyTunes.Repository
             return _context.Playlist.Where(x => x.CustomerId == customerId).AsEnumerable();
         }
 
-        public int Create(Playlist playlist) {
+        public Playlist GetById(int playlistId)
+        {
+            return _context.Playlist.Where(x => x.Id == playlistId).SingleOrDefault();
+        }
+
+        public int Create(Playlist playlist)
+        {
 
             int i;
 
@@ -30,6 +36,16 @@ namespace MyTunes.Repository
             _context.Playlist.Add(playlist);
             i = _context.SaveChanges();
 
+            return i;
+        }
+
+        public int Delete(int id)
+        {
+            int i;
+            var playlist = _context.Playlist.Where(x => x.Id == id).SingleOrDefault();
+            playlist.Track.ToList().ForEach(t => playlist.Track.Remove(t));
+            _context.Playlist.Remove(playlist);
+            i = _context.SaveChanges();
             return i;
         }
 

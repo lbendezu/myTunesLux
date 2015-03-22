@@ -54,7 +54,7 @@
                 type: "POST",
                 data: JSON.stringify(playlist),
                 success: function (data) {
-                    $(".result").html(data);
+                    window.location = "/PlayList/Index";
                 },
                 dataType: "json",
                 contentType: "application/json"

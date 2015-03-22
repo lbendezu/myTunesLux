@@ -54,8 +54,30 @@ namespace MyTunes.Controllers
             return Json(true);
         }
 
-        public ActionResult Details() {
-            return View();
+        public ActionResult Details(int id) {
+            var playlistService = new PlayListService();
+            var list = playlistService.GetById(id);
+            return View(list);
         }
+
+        public ActionResult Edit(int id) {
+            var playlistService = new PlayListService();
+            var list = playlistService.GetById(id);
+            return View(list);
+        }
+
+        public ActionResult Delete(int id) {
+            var playlistService = new PlayListService();
+            var list = playlistService.GetById(id);
+            return View(list);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection form) {
+            var playlistService = new PlayListService();
+            playlistService.Delete(id);
+            return RedirectToAction("Index");
+        }
+
     }
 }
