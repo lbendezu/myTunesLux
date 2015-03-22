@@ -123,6 +123,9 @@ namespace IdentitySample.Models
             if (role == null) {
                 role = new IdentityRole(roleName);
                 var roleresult = roleManager.Create(role);
+
+                //Creando rol cliente por defecto
+                roleManager.Create(new IdentityRole("Cliente"));
             }
 
             var user = userManager.FindByName(name);
